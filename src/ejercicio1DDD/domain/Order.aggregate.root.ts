@@ -1,6 +1,5 @@
-import { Money } from "./value-objects/Money";
-import type { OrderId } from "./value-objects/OrderId.type";
-import { OrderStatus } from "./value-objects/OrderStatus.enum";
+import { Money, type OrderId, OrderStatus } from "./value-objects";
+
 
 export class Order {
     constructor(
