@@ -7,7 +7,7 @@ export class OrderMother {
     public static pendingOrder(
         id: OrderId = 'ORDER-001',
         amount: number = 100,
-        currency: string = '$', 
+        currency: string = 'USD', 
         status: OrderStatus = OrderStatus.PENDING
     ): Order {
         const total = new Money ( amount, currency);
@@ -17,7 +17,7 @@ export class OrderMother {
     public static paidOrder(
         id: OrderId = 'ORDER-002',
         amount: number = 100,
-        currency: string = '$', 
+        currency: string = 'USD', 
         status: OrderStatus = OrderStatus.PAID
     ): Order {
         const total = new Money ( amount, currency);
@@ -27,7 +27,7 @@ export class OrderMother {
     public static shippedOrder(
         id: OrderId = 'ORDER-003',
         amount: number = 100,
-        currency: string = '$', 
+        currency: string = 'USD', 
         status: OrderStatus = OrderStatus.SHIPPED
     ): Order {
         const total = new Money ( amount, currency);
