@@ -1,9 +1,9 @@
-import type { ICreditService } from "../domain/domain-services/creditService.dservice";
-import type { IOrderRepository } from "../domain/repositories/orderRepository.repository";
+import type { IOrderRepository } from "../domain/repositories/IOrderRepository.repository";
 
 import type { OrderId } from "../domain/value-objects/OrderId.type";
 import { Money } from "../domain/value-objects/Money";
 import { OrderStatus } from "../domain/value-objects/OrderStatus.enum";
+import type { ICreditService } from "../domain/domain-services/creditService.dservice";
 import { Order } from "../domain/order.root";
 
 

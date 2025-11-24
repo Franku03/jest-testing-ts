@@ -1,4 +1,4 @@
-import type { IOrderRepository } from "../repositories/orderRepository.repository";
+import type { IOrderRepository } from "../repositories/IOrderRepository.repository";
 import type { OrderId } from "../value-objects/OrderId.type";
 
 export class ShipmentService {
