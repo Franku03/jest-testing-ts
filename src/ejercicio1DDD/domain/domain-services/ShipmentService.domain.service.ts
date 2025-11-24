@@ -11,7 +11,7 @@ export class ShipmentService {
     public async shipOrder(orderId: OrderId): Promise<void> {
         const order = await this.orderRepository.findById(orderId);
         if (!order) {
-        throw new Error('Order not found');
+            throw new Error('Order not found');
         }
         // La lógica de negocio reside en el Agregado, el servicio solo orquesta
         order.ship();
