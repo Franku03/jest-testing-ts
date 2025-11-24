@@ -16,5 +16,18 @@ describe('Pruebas en CreditService.domain.service.ts', () => {
 
     });
 
+    
+    test('debería fallar el cambio de estado de la Orden si la orden no existe', async () => {
+
+        const test = new OrderTestAPI();
+
+        await test
+                .givenAnOrderDoesNotExist('non-existing-id')
+                .whenDomainOrderShippmentIsExecuted();
+
+        test.thenItShouldFailWith('Order not found');
+
+    });
+
 
 });

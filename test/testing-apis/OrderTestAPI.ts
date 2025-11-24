@@ -60,7 +60,7 @@ export class OrderTestAPI {
         return this 
     };
 
-    public givenOrderDoesNotExist( orderId: OrderId ): this {
+    public givenAnOrderDoesNotExist( orderId: OrderId ): this {
 
         // Configuramos el valor de retorno del mock del metodo findById del repositorio el cual es utilizado por el domain Service
         this.repoMock.findById.calledWith( orderId ).mockResolvedValue( null );
@@ -71,12 +71,18 @@ export class OrderTestAPI {
 
     // * ACT / WHEN - Ejecucion de la prueba
 
+    // ? Prueba Servicio de Dominio
+
     public async whenDomainOrderShippmentIsExecuted(
         // orderId: OrderId
     ): Promise<this> {
 
         try {
-            await this.domainService.shipOrder( this.lastOrderState!.id );
+            if( !this.lastOrderState ){
+                await this.domainService.shipOrder( 'non-existing-id' );
+            }else{
+                await this.domainService.shipOrder( this.lastOrderState!.id );
+            }
         } catch (error) {
             this.lastError = error as Error;
         };
@@ -85,22 +91,23 @@ export class OrderTestAPI {
 
     };
 
+    // ? Prueba Servicio de Aplicacion
 
+    public async whenAppOrderShippmentIsExecuted(
+        userId: string,
+        totalAmount: number
+    ): Promise<this> {
 
-    // public async whenAppOrderShippmentIsExecuted(
-    //     orderId: OrderId
+        try {
+            await this.appService.placeOrder( userId, totalAmount );
+        } catch (error) {
+            console.log('hola', error);
+            this.lastError = error as Error;
+        };
 
-    // ): Promise<this> {
+        return this;
 
-    //     try {
-    //         await this.domainService.shipOrder( orderId );
-    //     } catch (error) {
-    //         this.lastError = error as Error;
-    //     };
-
-    //     return this;
-
-    // }
+    }
 
 
     // * ASSERT / THEN - Verificaciones / Aserciciones
@@ -113,7 +120,7 @@ export class OrderTestAPI {
         this.thenRepositoryShouldNotBeSaved();
     };
 
-    public thenRepositoryShouldNotBeSaved(): void {
+    private thenRepositoryShouldNotBeSaved(): void {
         // Verificamos que efectivamente el metodo save del repositorio no fue llamado dado que al lanzar el error la ejecucion del metodo del domain service se detuvo
         expect( this.repoMock.save ).not.toHaveBeenCalled();
     };
