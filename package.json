@@ -1,0 +1,27 @@
+{
+  "name": "testing-exercises",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest --watchAll"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@jest/globals": "^30.2.0",
+    "@types/jest": "^30.0.0",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0",
+    "jest-mock-extended": "^4.0.0",
+    "ts-jest": "^29.4.5"
+  }
+}
