@@ -22,7 +22,7 @@ describe('Pruebas en CreditService.domain.service.ts', () => {
         const test = new OrderTestAPI();
 
         await test
-                .givenAnOrderDoesNotExist('non-existing-id')
+                .givenAnOrderThatDoesNotExist('non-existing-id')
                 .whenDomainOrderShippmentIsExecuted();
 
         test.thenItShouldFailWith('Order not found');
