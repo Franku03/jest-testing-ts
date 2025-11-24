@@ -1,7 +1,6 @@
-import { Order } from "../../src/ejercicio1DDD/domain/order.root";
-import { Money } from "../../src/ejercicio1DDD/domain/value-objects/Money";
-import type { OrderId } from "../../src/ejercicio1DDD/domain/value-objects/OrderId.type";
-import { OrderStatus } from "../../src/ejercicio1DDD/domain/value-objects/OrderStatus.enum";
+import { Money, type OrderId, OrderStatus } from "../../src/ejercicio1DDD/domain";
+import { Order } from "../../src/ejercicio1DDD/domain/Order.aggregate.root";
+
 
 export class ObjectMother {
 

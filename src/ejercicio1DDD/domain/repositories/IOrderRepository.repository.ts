@@ -1,4 +1,4 @@
-import type { Order } from "../order.root";
+import type { Order } from "../Order.aggregate.root";
 import type { OrderId } from "../value-objects/OrderId.type";
 
 export interface IOrderRepository {

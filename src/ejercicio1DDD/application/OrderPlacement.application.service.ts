@@ -3,8 +3,8 @@ import type { IOrderRepository } from "../domain/repositories/IOrderRepository.r
 import type { OrderId } from "../domain/value-objects/OrderId.type";
 import { Money } from "../domain/value-objects/Money";
 import { OrderStatus } from "../domain/value-objects/OrderStatus.enum";
-import type { ICreditService } from "../domain/domain-services/CreditService.dservice";
-import { Order } from "../domain/order.root";
+import type { ICreditService } from "../domain/domain-services/CreditService.domain.service";
+import { Order } from "../domain/Order.aggregate.root";
 
 
 // OrderPlacementService (Nuestro SUT: Service de Aplicación)
