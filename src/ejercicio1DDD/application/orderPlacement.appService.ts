@@ -3,7 +3,7 @@ import type { IOrderRepository } from "../domain/repositories/IOrderRepository.r
 import type { OrderId } from "../domain/value-objects/OrderId.type";
 import { Money } from "../domain/value-objects/Money";
 import { OrderStatus } from "../domain/value-objects/OrderStatus.enum";
-import type { ICreditService } from "../domain/domain-services/creditService.dservice";
+import type { ICreditService } from "../domain/domain-services/CreditService.dservice";
 import { Order } from "../domain/order.root";
 
 
@@ -17,9 +17,11 @@ export class OrderPlacementService {
 
     public async placeOrder(userId: string, totalAmount: number): Promise<OrderId> {
         const isCreditValid = await this.creditService.validate(userId);
+        
         if (!isCreditValid) {
-        throw new Error('Credit check failed for user.');
+            throw new Error('Credit check failed for user.');
         }
+
         // Aquí usamos el Agregado (Order) y la lógica de negocio
         // Usamos el Mother Object internamente en producción o un Factory, pero
         // para simplificar, lo instanciamos aquí:
@@ -28,7 +30,9 @@ export class OrderPlacementService {
             new Money(totalAmount, 'USD'),
             OrderStatus.PENDING
         );
+
         await this.orderRepository.save(newOrder);
         return newOrder.id;
     }
+
 }

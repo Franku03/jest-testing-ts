@@ -2,7 +2,10 @@ import type { IOrderRepository } from "../repositories/IOrderRepository.reposito
 import type { OrderId } from "../value-objects/OrderId.type";
 
 export class ShipmentService {
-    constructor(private orderRepository: IOrderRepository) {}
+
+    constructor(
+        private orderRepository: IOrderRepository
+    ) {}
 
     public async shipOrder(orderId: OrderId): Promise<void> {
         const order = await this.orderRepository.findById(orderId);
@@ -14,4 +17,5 @@ export class ShipmentService {
         // Persistir el nuevo estado
         await this.orderRepository.save(order);
     }
+    
 }

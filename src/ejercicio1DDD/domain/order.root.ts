@@ -12,7 +12,7 @@ export class Order {
     // Método de negocio: Comportamiento
     public pay(): void {
         if (this.status !== OrderStatus.PENDING) {
-        throw new Error('Order already processed');
+            throw new Error('Order already processed');
         }
         this.status = OrderStatus.PAID;
     }
@@ -21,7 +21,7 @@ export class Order {
     public ship(): void {
         // Invariante: No se puede enviar si no está pagado
         if (this.status !== OrderStatus.PAID) {
-        throw new Error('Cannot ship an unpaid order');
+            throw new Error('Cannot ship an unpaid order');
         }
         this.status = OrderStatus.SHIPPED;
     }
